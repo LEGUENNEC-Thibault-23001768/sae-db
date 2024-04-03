@@ -44,48 +44,24 @@ pourcentage_alertes_orages_par_region = (nombre_alertes_orages_par_region / len(
 # Température maximale et minimale par région
 
 
+# Analyse de la pression par région
 
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-
-
-
-# Ensoleillement en W/m2
 
 mesure = pd.read_csv("MESURE.csv")
 
-# Filtrer les données pour ne conserver que les mesures d'ensoleillement
-ensoleillement_data = mesure[mesure['NOMM'] == 'Ensoleillement']
+pression_data = mesure[mesure['NOMM'] == 'Pression']
 
-# Charger les données de lieu depuis le fichier LIEU.csv
 lieu = pd.read_csv("LIEU.csv")
 
-# Fusionner les données d'ensoleillement avec les données de lieu pour obtenir le nom de la région associée à chaque mesure
-ensoleillement_merged = pd.merge(ensoleillement_data, lieu, left_on='IDR', right_on='IDL')
+pression_merged = pd.merge(pression_data, lieu, left_on='IDR', right_on='IDL')
 
-# Calculer la moyenne de l'ensoleillement pour chaque région
-ensoleillement_moyen_par_region = ensoleillement_merged.groupby('NOML')['MESURE'].mean()
+pression_moyenne_par_region = pression_merged.groupby('NOML')['MESURE'].mean()
 
-# Tracer un graphique pour visualiser l'ensoleillement moyen par région
 plt.figure(figsize=(12, 8))
-ensoleillement_moyen_par_region.plot(kind='bar', color='skyblue')
-plt.title('Ensoleillement Moyen par Région')
+pression_moyenne_par_region.plot(kind='bar', color='lightgreen')
+plt.title('Moyenne de la Pression Atmosphérique par Région')
 plt.xlabel('Région')
-plt.ylabel('Ensoleillement Moyen (W/m²)')
+plt.ylabel('Pression Atmosphérique (hPa)')
 plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.show()
