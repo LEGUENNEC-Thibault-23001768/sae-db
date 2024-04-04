@@ -114,3 +114,25 @@ plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 plt.show()'''
 
+# Analyse de la pollution par région
+
+'''
+alerte_df = pd.read_csv("ALERTE.csv")
+lieu_df = pd.read_csv("LIEU.csv")
+
+alerte_merged_df = pd.merge(alerte_df, lieu_df, left_on='IDL', right_on='IDL')
+
+pollution_df = alerte_merged_df[alerte_merged_df['CATEGORIE'] == 'Pollution']
+
+pollution_counts = pollution_df['NOML'].value_counts()
+
+plt.figure(figsize=(10, 6))
+pollution_counts.plot(kind='bar')
+plt.title('Nombre d\'alertes de pollution par région')
+plt.xlabel('Région')
+plt.ylabel('Nombre d\'alertes')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+'''
