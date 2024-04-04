@@ -43,7 +43,7 @@ plt.show()'''
 
 # Température maximale et minimale par région
 
-mesure_df = pd.read_csv("MESURE.csv")
+'''mesure_df = pd.read_csv("MESURE.csv")
 lieu_df = pd.read_csv("LIEU.csv")
 
 merged_df = pd.merge(mesure_df, lieu_df, left_on='IDR', right_on='IDL')
@@ -61,7 +61,7 @@ plt.ylabel('Température (°C)')
 plt.xticks(rotation=45)
 plt.legend(title='Statistique')
 plt.tight_layout()
-plt.show()
+plt.show()'''
 
 # Analyse de la pression par région
 
@@ -95,6 +95,22 @@ plt.figure(figsize=(10, 8))
 nombre_alertes_par_region.plot(kind='pie', autopct='%1.1f%%', startangle=140)
 plt.title('Répartition du Nombre d\'Alertes par Région')
 plt.axis('equal')  # Assurer que le camembert est circulaire
+plt.tight_layout()
+plt.show()'''
+
+# Catégories d'alertes en France
+
+'''alerte = pd.read_csv("ALERTE.csv")
+
+nombre_alertes_par_categorie = alerte['CATEGORIE'].value_counts()
+
+plt.figure(figsize=(10, 6))
+nombre_alertes_par_categorie.plot(kind='bar', color='skyblue')
+plt.title('Nombre d\'Alertes par Catégorie')
+plt.xlabel('Catégorie')
+plt.ylabel('Nombre d\'Alertes')
+plt.xticks(rotation=45)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 plt.show()'''
 
