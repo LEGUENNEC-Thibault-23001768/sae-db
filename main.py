@@ -22,7 +22,7 @@ Idées de requetes :
 
 import matplotlib.pyplot as plt
 
-donnees_fusionnees = pd.merge(alerte, lieu, left_on='IDL', right_on='IDL')
+'''donnees_fusionnees = pd.merge(alerte, lieu, left_on='IDL', right_on='IDL')
 
 alertes_orages = donnees_fusionnees[donnees_fusionnees['CATEGORIE'] == 'Orage']
 
@@ -30,19 +30,20 @@ nombre_alertes_orages_par_region = alertes_orages.groupby('NOML').size()
 
 pourcentage_alertes_orages_par_region = (nombre_alertes_orages_par_region / len(alertes_orages)) * 100
 
-# plt.figure(figsize=(10, 6))
-# pourcentage_alertes_orages_par_region.plot(kind='bar', color='skyblue')
-# plt.title('Pourcentage d\'alertes d\'orages par région')
-# plt.xlabel('Région')
-# plt.ylabel('Pourcentage')
-# plt.xticks(rotation=45, ha='right')
-# plt.tight_layout()
-# plt.show()
+plt.figure(figsize=(10, 6))
+pourcentage_alertes_orages_par_region.plot(kind='bar', color='skyblue')
+plt.title('Pourcentage d\'alertes d\'orages par région')
+plt.xlabel('Région')
+plt.ylabel('Pourcentage')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()'''
 
 # Rajouter des orages dans toutes les régions
 
 # Température maximale et minimale par région
 
+# A rajouter ici
 
 # Analyse de la pression par région
 
@@ -68,7 +69,7 @@ plt.show()'''
 
 # Répartition du nombre d'alertes par région 
 
-alerte_merged = pd.merge(alerte, lieu, left_on='IDL', right_on='IDL')
+'''alerte_merged = pd.merge(alerte, lieu, left_on='IDL', right_on='IDL')
 
 nombre_alertes_par_region = alerte_merged['NOML'].value_counts()
 
@@ -77,5 +78,5 @@ nombre_alertes_par_region.plot(kind='pie', autopct='%1.1f%%', startangle=140)
 plt.title('Répartition du Nombre d\'Alertes par Région')
 plt.axis('equal')  # Assurer que le camembert est circulaire
 plt.tight_layout()
-plt.show()
+plt.show()'''
 
