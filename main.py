@@ -43,7 +43,25 @@ plt.show()'''
 
 # Température maximale et minimale par région
 
-# A rajouter ici
+mesure_df = pd.read_csv("MESURE.csv")
+lieu_df = pd.read_csv("LIEU.csv")
+
+merged_df = pd.merge(mesure_df, lieu_df, left_on='IDR', right_on='IDL')
+
+temp_df = merged_df[merged_df['NOML'] != ''].loc[merged_df['NOMM'] == 'Temperature']
+
+temp_df['MESURE'] = temp_df['MESURE'].astype(float)
+
+temp_min_max = temp_df.groupby('NOML')['MESURE'].agg(['min', 'max'])
+
+temp_min_max.plot(kind='bar', figsize=(10, 6))
+plt.title('Température minimale et maximale par région')
+plt.xlabel('Région')
+plt.ylabel('Température (°C)')
+plt.xticks(rotation=45)
+plt.legend(title='Statistique')
+plt.tight_layout()
+plt.show()
 
 # Analyse de la pression par région
 
