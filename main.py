@@ -46,7 +46,7 @@ pourcentage_alertes_orages_par_region = (nombre_alertes_orages_par_region / len(
 
 # Analyse de la pression par région
 
-
+'''
 mesure = pd.read_csv("MESURE.csv")
 
 pression_data = mesure[mesure['NOMM'] == 'Pression']
@@ -64,4 +64,18 @@ plt.xlabel('Région')
 plt.ylabel('Pression Atmosphérique (hPa)')
 plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
+plt.show()'''
+
+# Répartition du nombre d'alertes par région 
+
+alerte_merged = pd.merge(alerte, lieu, left_on='IDL', right_on='IDL')
+
+nombre_alertes_par_region = alerte_merged['NOML'].value_counts()
+
+plt.figure(figsize=(10, 8))
+nombre_alertes_par_region.plot(kind='pie', autopct='%1.1f%%', startangle=140)
+plt.title('Répartition du Nombre d\'Alertes par Région')
+plt.axis('equal')  # Assurer que le camembert est circulaire
+plt.tight_layout()
 plt.show()
+
